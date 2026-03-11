@@ -471,23 +471,22 @@
 
   /* VIDEO WRAP */
   .video-wrap {
-    width: 100%; aspect-ratio: 9/16;
+    width: 100%;
     position: relative; overflow: hidden;
-    background: #080d18;
+    background: #080d18; border-radius: 12px 12px 0 0;
   }
+  .video-wrap.portrait { aspect-ratio: 9/16; }
+  .video-wrap.landscape { aspect-ratio: 16/9; }
   .video-wrap video {
     width: 100%; height: 100%;
     object-fit: cover; display: block;
   }
-  .vid-overlay {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(0,0,0,0.25);
-    transition: background .3s;
-  }
-  .video-card:hover .vid-overlay { background: rgba(34,154,243,0.1); }
-  .vid-overlay.playing { background: transparent; }
-  .vid-overlay.playing:hover { background: rgba(0,0,0,0.15); }
+  /* native controls bar */
+  .video-wrap video::-webkit-media-controls { display: flex !important; }
+
+
+  /* Landscape video cards span full width */
+  .landscape-card { grid-column: 1 / -1; max-width: 560px; margin: 0 auto; width: 100%; }
 
   /* POSTER IMAGE */
   .poster-thumb {
@@ -592,146 +591,177 @@
   <p class="section-sub reveal">Scroll-stopping short-form video content crafted for Instagram — trend-aligned, brand-consistent, and optimized for reach and engagement.</p>
   <div class="videos-grid">
 
-    <div class="video-card reveal">
-      <div class="video-wrap">
-        <video src="Portfolio videos/video1.mp4" playsinline loop muted></video>
-        <div class="vid-overlay">
-          <button class="play-ring" onclick="toggleVideo(this)"><div class="play-tri"></div></button>
-        </div>
-        <span class="reel-tag">Reel</span>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video1.mp4" playsinline loop muted controls></video>
       </div>
       <div class="video-foot">
         <span class="video-type">Brand Reel</span>
         <span class="video-platform">📱 Instagram</span>
       </div>
     </div>
-
-    <div class="video-card reveal">
-      <div class="video-wrap">
-        <video src="Portfolio videos/video2.mp4" playsinline loop muted></video>
-        <div class="vid-overlay">
-          <button class="play-ring" onclick="toggleVideo(this)"><div class="play-tri"></div></button>
-        </div>
-        <span class="reel-tag">Reel</span>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video2.mp4" playsinline loop muted controls></video>
       </div>
       <div class="video-foot">
         <span class="video-type">Product Reel</span>
         <span class="video-platform">📱 Instagram</span>
       </div>
     </div>
-
-    <div class="video-card reveal">
-      <div class="video-wrap">
-        <video src="Portfolio videos/video3.mp4" playsinline loop muted></video>
-        <div class="vid-overlay">
-          <button class="play-ring" onclick="toggleVideo(this)"><div class="play-tri"></div></button>
-        </div>
-        <span class="reel-tag">Reel</span>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video3.mp4" playsinline loop muted controls></video>
       </div>
       <div class="video-foot">
         <span class="video-type">Campaign Reel</span>
         <span class="video-platform">📱 Instagram</span>
       </div>
     </div>
-
-    <div class="video-card reveal">
-      <div class="video-wrap">
-        <video src="Portfolio videos/video4.mp4" playsinline loop muted></video>
-        <div class="vid-overlay">
-          <button class="play-ring" onclick="toggleVideo(this)"><div class="play-tri"></div></button>
-        </div>
-        <span class="reel-tag">Reel</span>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video4.mp4" playsinline loop muted controls></video>
       </div>
       <div class="video-foot">
         <span class="video-type">Promo Reel</span>
         <span class="video-platform">📱 Instagram</span>
       </div>
     </div>
-
-    <div class="video-card reveal">
-      <div class="video-wrap">
-        <video src="Portfolio videos/video5.mp4" playsinline loop muted></video>
-        <div class="vid-overlay">
-          <button class="play-ring" onclick="toggleVideo(this)"><div class="play-tri"></div></button>
-        </div>
-        <span class="reel-tag">Reel</span>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video5.mp4" playsinline loop muted controls></video>
       </div>
       <div class="video-foot">
         <span class="video-type">Brand Story</span>
         <span class="video-platform">📱 Instagram</span>
       </div>
     </div>
-
-    <div class="video-card reveal">
-      <div class="video-wrap">
-        <video src="Portfolio videos/video6.mp4" playsinline loop muted></video>
-        <div class="vid-overlay">
-          <button class="play-ring" onclick="toggleVideo(this)"><div class="play-tri"></div></button>
-        </div>
-        <span class="reel-tag">Reel</span>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video6.mp4" playsinline loop muted controls></video>
       </div>
       <div class="video-foot">
         <span class="video-type">Trend Reel</span>
         <span class="video-platform">📱 Instagram</span>
       </div>
     </div>
-
-    <div class="video-card reveal">
-      <div class="video-wrap">
-        <video src="Portfolio videos/video7.mp4" playsinline loop muted></video>
-        <div class="vid-overlay">
-          <button class="play-ring" onclick="toggleVideo(this)"><div class="play-tri"></div></button>
-        </div>
-        <span class="reel-tag">Reel</span>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video7.mp4" playsinline loop muted controls></video>
       </div>
       <div class="video-foot">
         <span class="video-type">Ad Creative</span>
         <span class="video-platform">📱 Instagram</span>
       </div>
     </div>
-
-    <div class="video-card reveal">
-      <div class="video-wrap">
-        <video src="Portfolio videos/video8.mp4" playsinline loop muted></video>
-        <div class="vid-overlay">
-          <button class="play-ring" onclick="toggleVideo(this)"><div class="play-tri"></div></button>
-        </div>
-        <span class="reel-tag">Reel</span>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video8.mp4" playsinline loop muted controls></video>
       </div>
       <div class="video-foot">
         <span class="video-type">Testimonial</span>
         <span class="video-platform">📱 Instagram</span>
       </div>
     </div>
-
-    <div class="video-card reveal">
-      <div class="video-wrap">
-        <video src="Portfolio videos/video9.mp4" playsinline loop muted></video>
-        <div class="vid-overlay">
-          <button class="play-ring" onclick="toggleVideo(this)"><div class="play-tri"></div></button>
-        </div>
-        <span class="reel-tag">Reel</span>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video9.mp4" playsinline loop muted controls></video>
       </div>
       <div class="video-foot">
         <span class="video-type">Value Series</span>
         <span class="video-platform">📱 Instagram</span>
       </div>
     </div>
-
-    <div class="video-card reveal">
-      <div class="video-wrap">
-        <video src="Portfolio videos/video10.mp4" playsinline loop muted></video>
-        <div class="vid-overlay">
-          <button class="play-ring" onclick="toggleVideo(this)"><div class="play-tri"></div></button>
-        </div>
-        <span class="reel-tag">Reel</span>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video10.mp4" playsinline loop muted controls></video>
       </div>
       <div class="video-foot">
         <span class="video-type">Brand Montage</span>
         <span class="video-platform">📱 Instagram</span>
       </div>
     </div>
-
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video11.mp4" playsinline loop muted controls></video>
+      </div>
+      <div class="video-foot">
+        <span class="video-type">Event Reel</span>
+        <span class="video-platform">📱 Instagram</span>
+      </div>
+    </div>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video12.mp4" playsinline loop muted controls></video>
+      </div>
+      <div class="video-foot">
+        <span class="video-type">Product Launch</span>
+        <span class="video-platform">📱 Instagram</span>
+      </div>
+    </div>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video13.mp4" playsinline loop muted controls></video>
+      </div>
+      <div class="video-foot">
+        <span class="video-type">Social Clip</span>
+        <span class="video-platform">📱 Instagram</span>
+      </div>
+    </div>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video14.mp4" playsinline loop muted controls></video>
+      </div>
+      <div class="video-foot">
+        <span class="video-type">Lifestyle Reel</span>
+        <span class="video-platform">📱 Instagram</span>
+      </div>
+    </div>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video15.mp4" playsinline loop muted controls></video>
+      </div>
+      <div class="video-foot">
+        <span class="video-type">Promo Story</span>
+        <span class="video-platform">📱 Instagram</span>
+      </div>
+    </div>
+    <div class="video-card reveal ">
+      <div class="video-wrap portrait">
+        <video src="Portfolio videos/video16.mp4" playsinline loop muted controls></video>
+      </div>
+      <div class="video-foot">
+        <span class="video-type">Brand Film</span>
+        <span class="video-platform">📱 Instagram</span>
+      </div>
+    </div>
+    <div class="video-card reveal landscape-card">
+      <div class="video-wrap landscape">
+        <video src="Portfolio videos/video21.mp4" playsinline loop muted controls></video>
+      </div>
+      <div class="video-foot">
+        <span class="video-type">Behind The Scenes</span>
+        <span class="video-platform">📱 Instagram</span>
+      </div>
+    </div>
+    <div class="video-card reveal landscape-card">
+      <div class="video-wrap landscape">
+        <video src="Portfolio videos/video22.mp4" playsinline loop muted controls></video>
+      </div>
+      <div class="video-foot">
+        <span class="video-type">Event Coverage</span>
+        <span class="video-platform">📱 Instagram</span>
+      </div>
+    </div>
+    <div class="video-card reveal landscape-card">
+      <div class="video-wrap landscape">
+        <video src="Portfolio videos/video23.mp4" playsinline loop muted controls></video>
+      </div>
+      <div class="video-foot">
+        <span class="video-type">Cinematic Reel</span>
+        <span class="video-platform">📱 Instagram</span>
+      </div>
+    </div>
   </div>
 </section>
 <div class="divider"></div>
@@ -966,50 +996,24 @@
   <div class="footer-copy">© 2025 Trenzor. All rights reserved.</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
   <button class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('active')">✕</button>
   <img id="lightbox-img" src="" alt="Poster"/>
 </div>
+
 <script>
   // Scroll reveal
   const reveals = document.querySelectorAll(".reveal");
-  const obs = new IntersectionObserver((entries) => {
+  const revealObs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
         setTimeout(() => e.target.classList.add("visible"), i * 55);
-        obs.unobserve(e.target);
+        revealObs.unobserve(e.target);
       }
     });
   }, { threshold: 0.08 });
-  reveals.forEach(el => obs.observe(el));
-
-  // Video toggle play/pause
-  function toggleVideo(btn) {
-    const wrap = btn.closest(".video-wrap");
-    const video = wrap.querySelector("video");
-    const overlay = wrap.querySelector(".vid-overlay");
-    if (video.paused) {
-      // Pause all other videos first
-      document.querySelectorAll(".video-wrap video").forEach(v => {
-        if (v !== video) {
-          v.pause();
-          v.closest(".video-wrap").querySelector(".vid-overlay").classList.remove("playing");
-          const b = v.closest(".video-wrap").querySelector(".play-ring");
-          b.innerHTML = '<div class="play-tri"></div>';
-        }
-      });
-      video.muted = false;
-      video.play();
-      overlay.classList.add("playing");
-      btn.innerHTML = '<div style="width:4px;height:18px;background:var(--blue);border-radius:2px;margin:0 2px"></div><div style="width:4px;height:18px;background:var(--blue);border-radius:2px;margin:0 2px"></div>';
-    } else {
-      video.pause();
-      overlay.classList.remove("playing");
-      btn.innerHTML = '<div class="play-tri"></div>';
-    }
-  }
+  reveals.forEach(el => revealObs.observe(el));
 
   // Lightbox
   function openLightbox(src) {
@@ -1024,8 +1028,18 @@
   document.addEventListener("keydown", e => {
     if (e.key === "Escape") document.getElementById("lightbox").classList.remove("active");
   });
-</script><script>
-  const reveals = document.querySelectorAll(".reveal");
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (
+
+  // Auto-pause videos when out of view
+  document.querySelectorAll(".video-wrap video").forEach(video => {
+    const videoObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.2 });
+    videoObs.observe(video);
+  });
+</script>
+</body>
+</html>
