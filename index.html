@@ -335,15 +335,22 @@
   .pillar-icon { font-size: 1.3rem; margin-bottom: 9px; }
   .pillar-title { font-family: "Rajdhani", sans-serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
   .pillar-text { font-size: 0.76rem; color: var(--grey); line-height: 1.5; }
-  .about-right { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .about-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-content: start;
+  
+    align-items: stretch;}
   .metric-card {
     background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 30px 20px; text-align: center;
+    border-radius: 12px; padding: 36px 20px; text-align: center;
     transition: border-color .3s;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    min-height: 130px;
   }
   .metric-card:hover { border-color: var(--azure); }
-  .metric-card:nth-child(2) { margin-top: 22px; }
-  .metric-card:nth-child(4) { margin-top: -22px; }
   .metric-num {
     font-family: "Rajdhani", sans-serif; font-size: 2.6rem; font-weight: 700;
     background: linear-gradient(90deg, var(--blue), var(--azure));
@@ -1029,7 +1036,7 @@
     if (e.key === "Escape") document.getElementById("lightbox").classList.remove("active");
   });
 
-  // Auto-pause videos when out of view
+  // Auto-pause videos when scrolled out of view
   document.querySelectorAll(".video-wrap video").forEach(video => {
     const videoObs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
