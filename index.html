@@ -725,15 +725,29 @@ cat > /mnt/user-data/outputs/Main_Index.html << 'HTMLEOF'
         </div>
       </div>
     </div>
-    <div class="contact-form reveal">
+    
+    <!-- REPLACE THIS FORM -->
+    <form class="contact-form reveal" action="https://formspree.io/f/xlgyjlrq" method="POST">
       <div class="form-row">
-        <div class="form-group"><label>Your Name</label><input type="text" placeholder="John Doe"/></div>
-        <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@example.com"/></div>
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" name="name" placeholder="John Doe" required/>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="john@example.com" required/>
+        </div>
       </div>
-      <div class="form-group"><label>Subject</label><input type="text" placeholder="Social Media Management"/></div>
-      <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your brand and what you're looking to achieve..."></textarea></div>
-      <button class="btn-submit" type="button">Send Message →</button>
-    </div>
+      <div class="form-group">
+        <label>Subject</label>
+        <input type="text" name="subject" placeholder="Social Media Management" required/>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea name="message" placeholder="Tell us about your brand and what you're looking to achieve..." required></textarea>
+      </div>
+      <button class="btn-submit" type="submit">Send Message →</button>
+    </form>
   </div>
 </section>
 
@@ -879,7 +893,57 @@ cat > /mnt/user-data/outputs/Main_Index.html << 'HTMLEOF'
     });
   }, { threshold: 0.3 });
   document.querySelectorAll('.hero-stats, .about-right').forEach(el => countObs.observe(el));
+
+
+/* ─── FORMPREE FORM HANDLER ─── */
+document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const submitBtn = form.querySelector('.btn-submit');
+    const originalText = submitBtn.textContent;
+    
+    // Show loading state
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    
+    // Send form data to Formspree
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            // Success
+            submitBtn.textContent = '✓ Sent!';
+            submitBtn.style.background = 'linear-gradient(135deg, #00f5a0, #00d4ff)';
+            form.reset();
+            
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = '';
+                submitBtn.disabled = false;
+            }, 3000);
+        } else {
+            throw new Error('Form submission failed');
+        }
+    })
+    .catch(error => {
+        // Error - fallback to mailto
+        alert('Could not send form. Your email client will open.');
+        const name = form.querySelector('input[name="name"]').value;
+        const email = form.querySelector('input[name="email"]').value;
+        const subject = form.querySelector('input[name="subject"]').value;
+        const message = form.querySelector('textarea[name="message"]').value;
+        window.location.href = `mailto:teamtrenzor@gmail.com?subject=${encodeURIComponent(subject)}&body=Name: ${name}%0AEmail: ${email}%0A%0AMessage: ${message}`;
+        
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    });
+});
 </script>
 </body>
 </html>
-
